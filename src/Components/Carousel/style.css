@@ -1,0 +1,37 @@
+#movieCarousel .carousel-caption {
+  top: 61%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.carousel-item img {
+  height: 540px;
+  width: 100%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  transform: scale(1);
+  transition: all 0.5s !important;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  transform: scale(1.5);
+  color: #f1684e !important;
+}
+
+#movieCarousel .play {
+  color: white;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: all 0.5s;
+}
+
+#movieCarousel .play:hover {
+  color: #f1684e;
+  border-color: #f1684e;
+  transform: scale(1.5);
+}
