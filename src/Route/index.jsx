@@ -64,11 +64,11 @@ const routerAdmin = [
     component: AddUser,
     exact: false,
   },
-  // {
-  //   path: "/list-user",
-  //   component: ListUser,
-  //   exact: false,
-  // },
+  {
+    path: "/list-user",
+    component: ListUser,
+    exact: false,
+  },
   {
     path: "/add-movie",
     component: AddMovie,

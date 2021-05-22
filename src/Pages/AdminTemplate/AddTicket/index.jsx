@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { useStyles } from "../AddUser/style";
 import { useFormik } from "formik";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Backdrop, CircularProgress, Dialog, MenuItem } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
@@ -19,17 +19,12 @@ import Loading from "Components/Loading";
 import { createShowApi } from "Reducer/createNewShow";
 import { listCinemaApi } from "Reducer/listCinema";
 import { listInformationCinemaApi } from "Reducer/listInformationCinema";
-import moment from "moment";
 
 export default function AddTicket(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-<<<<<<< HEAD
-
-=======
   const history = useHistory();
-  
->>>>>>> 045bf435d08b9784d4e559a8717d2325168ee86c
+
   // let [ listMovie ,setListMovie] = useState([])
   const [open, setOpen] = useState(false);
   const loading = useSelector((state) => state.listMovie.loading);
@@ -47,27 +42,14 @@ export default function AddTicket(props) {
     },
     onSubmit: async (values) => {
       const valuesPost = {
-<<<<<<< HEAD
         maPhim: values.maPhim,
-        ngayChieuGioChieu: "null",
+        ngayChieuGioChieu: "",
         maRap: values.maRap,
         giaVe: values.giaVe,
       };
       console.log(valuesPost);
       await dispatch(createShowApi(valuesPost));
       setOpen(true);
-=======
-        maPhim:values.maPhim,
-        ngayChieuGioChieu:"",
-        maRap:values.maRap,
-        giaVe:values.giaVe
-      }
-      console.log(valuesPost)
-      await dispatch(createShowApi(valuesPost)); 
-        setOpen(true);
-        
-      
->>>>>>> 045bf435d08b9784d4e559a8717d2325168ee86c
     },
   });
 
@@ -84,7 +66,7 @@ export default function AddTicket(props) {
         open={open}
         onClose={() => {
           setOpen(false);
-          history.push("/dash-board")
+          history.push("/dash-board");
         }}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
