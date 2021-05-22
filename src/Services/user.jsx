@@ -18,10 +18,56 @@ export default class UserService {
     });
   }
 
+  getUserApi() {
+    return Axios({
+      url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP10",
+      method: "GET",
+    });
+  }
+  deleteUserApi(user) {
+    let accessToken = "";
+    if (localStorage.getItem("UserAdmin")) {
+      accessToken = JSON.parse(localStorage.getItem("UserAdmin")).accessToken;
+    }
+    return Axios({
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${user}`,
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+  }
+  updateUserApi(user) {
+    let accessToken = "";
+    if (localStorage.getItem("UserAdmin")) {
+      accessToken = JSON.parse(localStorage.getItem("UserAdmin")).accessToken;
+    }
+    return Axios({
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+      method: "PUT",
+      data: user,
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+  }
+
+  listUserOnPageApi(soTrang, soPhanTuTrenTrang, searchValue) {
+    let urlApi = "";
+    if (searchValue === "") {
+      urlApi = `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP10&soTrang=${soTrang}&soPhanTuTrenTrang=${soPhanTuTrenTrang}`;
+    } else {
+      urlApi = `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP10&tuKhoa=${searchValue}&soTrang=${soTrang}&soPhanTuTrenTrang=${soPhanTuTrenTrang}`;
+    }
+    return Axios({
+      url: urlApi,
+      method: "GET",
+    });
+  }
   userValidationLogin = Yup.object({
     taiKhoan: Yup.string()
       .min(4, "Không được nhập ít hơn 4 ký tự")
-      .max(10, "Không được nhập nhiều hơn 10 ký tự")
+      .max(14, "Không được nhập nhiều hơn 14 ký tự")
       .required("Không được để trống"),
     matKhau: Yup.string()
       .min(6, "Không được nhập ít hơn 6 ký tự")
@@ -32,7 +78,7 @@ export default class UserService {
   userValidationSignUp = Yup.object({
     taiKhoan: Yup.string()
       .min(4, "Không được nhập ít hơn 4 ký tự")
-      .max(10, "Không được nhập nhiều hơn 10 ký tự")
+      .max(14, "Không được nhập nhiều hơn 14 ký tự")
       .required("Không được để trống"),
     matKhau: Yup.string()
       .min(6, "Không được nhập ít hơn 6 ký tự")
