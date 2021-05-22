@@ -12,7 +12,7 @@ export const theme = createMuiTheme({
   },
   palette: {
     action: {
-      disabledBackground: "white",
+      disabledBackground: "#484848",
       disabled: "gray",
     },
     primary: {

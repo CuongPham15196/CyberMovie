@@ -57,6 +57,7 @@ export default function PersistentDrawerRight(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const setPage = () => {
     if (window.pageYOffset >= 50) {
       setChangeBg(true);
@@ -64,6 +65,7 @@ export default function PersistentDrawerRight(props) {
       setChangeBg(false);
     }
   };
+
   useEffect(() => {
     function watchScroll() {
       window.addEventListener("scroll", setPage);
@@ -73,6 +75,7 @@ export default function PersistentDrawerRight(props) {
       window.removeEventListener("scroll", setPage);
     };
   });
+
   return (
     <div className={classes.root}>
       <AppBar

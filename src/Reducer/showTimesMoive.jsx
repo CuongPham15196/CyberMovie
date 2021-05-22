@@ -18,7 +18,7 @@ export const showTimesMovieApi = createAsyncThunk(
   }
 );
 
-const showTimesMoive = createSlice({
+const showTimesMovie = createSlice({
   name: "showTimesMovie",
   initialState,
   reducers: {},
@@ -39,5 +39,5 @@ const showTimesMoive = createSlice({
   },
 });
 
-export const {} = showTimesMoive.actions;
-export default showTimesMoive.reducer;
+export const {} = showTimesMovie.actions;
+export default showTimesMovie.reducer;

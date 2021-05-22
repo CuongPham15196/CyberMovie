@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { movieService } from "Services";
+import { userService } from "Services";
+
 
 const initialState = {
   loading: false,
@@ -7,36 +8,37 @@ const initialState = {
   err: null,
 };
 
-export const listMovieApi = createAsyncThunk(
-  "listMovie/listMovieApi",
-  async (params, { rejectWithValue }) => {
+export const deleteUserApi = createAsyncThunk(
+  "deleteUserApi",
+  async ( user, { rejectWithValue }) => {
     try {
-      return await movieService.listMovieApi();
+      return await userService.deleteUserApi(user);
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
   }
 );
 
-const listMovie = createSlice({
-  name: "listMovie",
+const deleteUser = createSlice({
+  name: "deleteUserApi",
   initialState,
   reducers: {},
   extraReducers: {
-    [listMovieApi.pending]: (state) => {
+    [deleteUserApi.pending]: (state, action) => {
       state.loading = true;
     },
-    [listMovieApi.fulfilled]: (state, action) => {
+    [deleteUserApi.fulfilled]: (state, action) => {
       state.loading = false;
       state.data = action.payload.data;
       state.err = null;
     },
-    [listMovieApi.rejected]: (state, action) => {
+    [deleteUserApi.rejected]: (state, action) => {
       state.loading = false;
       state.data = null;
       state.err = action.payload;
     },
   },
 });
-export const {} = listMovie.actions;
-export default listMovie.reducer;
+
+export const {  } = deleteUser.actions;
+export default deleteUser.reducer;

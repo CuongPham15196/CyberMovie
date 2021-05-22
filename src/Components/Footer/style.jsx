@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "black",
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(12),
   },
   logo: {
     width: 50,

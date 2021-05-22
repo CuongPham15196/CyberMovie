@@ -1,19 +1,25 @@
 import React from "react";
+import SideMenuComp from "Components/SideBarAdmin";
 import { Redirect, Route } from "react-router-dom";
-import NavBarAdmin from "Components/NavBarAdmin";
-import { useStyles } from "./style";
+import "./styleadmin.css"
+
+import AppBarAdmin from "Components/AppBarAdmin";
 
 function AdminLayout(props) {
-  const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <NavBarAdmin />
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        {props.children}
-      </main>
-    </div>
-  );
+    <div className="container-fluid" >
+          {/* //  <div className="row">
+          //    <div className="col-2 noPadding" >
+          //    <SideMenuComp/>
+          //    </div>
+          //    <div className="col-10 noPadding">
+          //    {props.children}
+          //    </div>
+          //  </div> */}
+          <AppBarAdmin children={props.children}/>
+     </div>
+  )
+
 }
 
 function AdminTemplate({ Component, ...props }) {
@@ -21,7 +27,7 @@ function AdminTemplate({ Component, ...props }) {
     <Route
       {...props}
       render={(propsComponent) => {
-        if (localStorage.getItem("Admin")) {
+        if (localStorage.getItem("UserAdmin")) {
           return (
             <AdminLayout>
               <Component {...propsComponent} />

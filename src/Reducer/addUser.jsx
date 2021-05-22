@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { userService } from "Services";
+import { adminService } from "Services";
 
 const initialState = {
   loading: false,
@@ -7,39 +7,35 @@ const initialState = {
   err: null,
 };
 
-export const userLoginApi = createAsyncThunk(
-  "userLogin/userLoginApi",
+export const addUserApi = createAsyncThunk(
+  "addUser/addUserApi",
   async (user, { rejectWithValue }) => {
     try {
-      return await userService.userLoginApi(user);
+      return await adminService.addUserApi(user);
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
   }
 );
 
-const userLogin = createSlice({
-  name: "userLogin",
+const addUser = createSlice({
+  name: "addUser",
   initialState,
   reducers: {
-    userLogOut(state, action) {
+    addUserReset(state, action) {
       state.data = null;
-      state.err = null;
-      localStorage.clear("User");
     },
   },
   extraReducers: {
-    [userLoginApi.pending]: (state) => {
+    [addUserApi.pending]: (state) => {
       state.loading = true;
-      state.data = null;
-      state.err = null;
     },
-    [userLoginApi.fulfilled]: (state, action) => {
+    [addUserApi.fulfilled]: (state, action) => {
       state.loading = false;
       state.data = action.payload.data;
       state.err = null;
     },
-    [userLoginApi.rejected]: (state, action) => {
+    [addUserApi.rejected]: (state, action) => {
       state.loading = false;
       state.data = null;
       state.err = action.payload;
@@ -47,5 +43,5 @@ const userLogin = createSlice({
   },
 });
 
-export const { userLogOut } = userLogin.actions;
-export default userLogin.reducer;
+export const { addUserReset } = addUser.actions;
+export default addUser.reducer;

@@ -25,6 +25,7 @@ function NavTicket(props) {
   });
 
   useEffect(() => {
+    console.log(formik.values.movie);
     dispatch(showTimesMovieApi(formik.values.movie));
   }, [formik.values.movie]);
 
@@ -172,24 +173,27 @@ function NavTicket(props) {
               )}
             </NativeSelect>
           </FormControl>
-          <NavLink to={`/dat-ve/${maLichChieu}/${nameMovie}`} style={{ textDecoration: "none" }}>
-            <Button
-              className={classes.btn}
-              type="submit"
-              disabled={
-                !(
-                  formik.values.movie &&
-                  formik.values.cinema &&
-                  formik.values.date &&
-                  formik.values.time
-                )
-              }
-              variant="contained"
-              color="primary"
+          <Button
+            className={classes.btn}
+            type="submit"
+            disabled={
+              !(
+                formik.values.movie &&
+                formik.values.cinema &&
+                formik.values.date &&
+                formik.values.time
+              )
+            }
+            variant="contained"
+            color="primary"
+          >
+            <NavLink
+              to={`/dat-ve/${maLichChieu}/${nameMovie}`}
+              style={{ textDecoration: "none", color: "white" }}
             >
               Đặt vé
-            </Button>
-          </NavLink>
+            </NavLink>
+          </Button>
         </form>
       </div>
     </section>

@@ -10,6 +10,7 @@ export const useStyles = makeStyles((theme) => ({
     boxShadow: "5px 5px #b93724",
   },
   bill: {
+    margin: "20px 0",
     width: "70%",
     backgroundColor: "black",
     border: "1px solid white",
